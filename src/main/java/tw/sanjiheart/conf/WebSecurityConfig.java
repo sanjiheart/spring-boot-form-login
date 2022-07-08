@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -18,20 +17,15 @@ public class WebSecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-        .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        .and()
-        .authorizeRequests()
-        .antMatchers("/login.html", "/js/login.js").permitAll()
+        .authorizeHttpRequests()
         .anyRequest().authenticated()
         .and()
         .formLogin()
-        .loginPage("/login.html")
-        .loginProcessingUrl("/doLogin")
-        .defaultSuccessUrl("/logout.html", true)
-        .failureUrl("/login.html?error")
-        .and()
+        .loginPage("/login").permitAll()
+        .defaultSuccessUrl("/index.html", true)
+      .and()
         .logout()
-        .logoutUrl("/doLogout");        
+        .logoutSuccessUrl("/login");
     return http.build();
   }
 

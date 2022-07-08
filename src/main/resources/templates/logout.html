@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>登出Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]將離開這張桌子...</h1>
+        <form th:action="@{/logout}" method="POST">
+            <button type="submit" ref="submitBtn">登出</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.0/dist/vue.js"></script>
+    <script src="js/logout.js"></script>
+</body>
+
+</html>

@@ -1,9 +1,6 @@
-const { createApp } = Vue
-
-createApp({
-    data() {
-        return {
-            token: document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, '$1')
-        }
+new Vue({
+    el: '#app',
+    mounted() {
+        this.$refs.submitBtn.click();
     }
-}).mount('#app')
+});
