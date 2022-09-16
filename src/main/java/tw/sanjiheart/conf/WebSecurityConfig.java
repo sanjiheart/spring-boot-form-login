@@ -18,11 +18,12 @@ public class WebSecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests()
+        .antMatchers("/web/node_modules/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
         .loginPage("/login").permitAll()
-        .defaultSuccessUrl("/index.html", true)
+        .defaultSuccessUrl("/web/index.html", true)
       .and()
         .logout()
         .logoutSuccessUrl("/login");

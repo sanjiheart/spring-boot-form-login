@@ -2,19 +2,27 @@
 <html lang="zh-TW" xmlns:th="https://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登出Demo</title>
+    <link rel="stylesheet" href="web/node_modules/bootswatch/dist/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="web/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
     <div id="app">
         <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]將離開這張桌子...</h1>
         <form th:action="@{/logout}" method="POST">
-            <button type="submit" ref="submitBtn">登出</button>
+            <button type="submit" class="btn btn-primary" ref="submitBtn">登出</button>
         </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.0/dist/vue.js"></script>
-    <script src="js/logout.js"></script>
+    <script src="web/node_modules/vue/dist/vue.js"></script>
+    <script src="web/node_modules/axios/dist/axios.min.js"></script>
+    <script src="web/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="web/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="web/js/logout.js"></script>
 </body>
 
 </html>
