@@ -3,3 +3,8 @@ server:
 
 thymeleaf:
   cache: false
+
+mongo:
+  host: localhost
+  port: 27017
+  dbName: test-db
