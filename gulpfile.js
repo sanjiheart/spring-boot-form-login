@@ -32,9 +32,8 @@ function copyLibs() {
         src(`${SRC_LIBS_PATH}/vue/dist/**`).pipe(dest(`${BUILD_LIBS_PATH}/vue/dist`)),
         src(`${SRC_LIBS_PATH}/axios/dist/**`).pipe(dest(`${BUILD_LIBS_PATH}/axios/dist`)),
         src(`${SRC_LIBS_PATH}/bootstrap/dist/**`).pipe(dest(`${BUILD_LIBS_PATH}/bootstrap/dist`)),
-        src(`${SRC_LIBS_PATH}/bootswatch/dist/minty/**`).pipe(dest(`${BUILD_LIBS_PATH}/bootswatch/dist/minty`)),
-        src(`${SRC_LIBS_PATH}/@fortawesome/fontawesome-free/**`).pipe(dest(`${BUILD_LIBS_PATH}/@fortawesome/fontawesome-free`)),
-        src(`${SRC_LIBS_PATH}/luxon/build/global/**`).pipe(dest(`${BUILD_LIBS_PATH}/luxon/build/global`))
+        src(`${SRC_LIBS_PATH}/bootswatch/dist/lumen/**`).pipe(dest(`${BUILD_LIBS_PATH}/bootswatch/dist/lumen`)),
+        src(`${SRC_LIBS_PATH}/@fortawesome/fontawesome-free/**`).pipe(dest(`${BUILD_LIBS_PATH}/@fortawesome/fontawesome-free`))
     );
 }
 
@@ -56,13 +55,14 @@ function minifyJs() {
 // inject & minify HTML files
 function injectLibs() {
     var targets = src(`${SRC_PATH}/*.html`);
-    var sources = src([`${SRC_LIBS_PATH}/bootswatch/dist/minty/bootstrap.min.css`,
+    var sources = src([`${SRC_LIBS_PATH}/bootswatch/dist/lumen/bootstrap.min.css`,
     `${SRC_LIBS_PATH}/@fortawesome/fontawesome-free/css/all.min.css`,
+    `${SRC_PATH}/css/global.css`,
     `${SRC_LIBS_PATH}/vue/dist/vue.js`,
     `${SRC_LIBS_PATH}/axios/dist/axios.min.js`,
     `${SRC_LIBS_PATH}/bootstrap/dist/js/bootstrap.min.js`,
     `${SRC_LIBS_PATH}/@fortawesome/fontawesome-free/js/all.min.js`,
-    `${SRC_LIBS_PATH}/luxon/build/global/luxon.min.js`
+    `${SRC_PATH}/js/envs.js`
     ], { read: false });
     return targets.pipe(inject(sources, { ignorePath: SRC_PATH, addRootSlash: false }))
         .pipe(minifyHtml())

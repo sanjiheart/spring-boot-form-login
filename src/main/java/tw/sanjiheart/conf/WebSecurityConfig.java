@@ -27,9 +27,13 @@ public class WebSecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
+        .cors() // required for @CrossOrigin
+        .and()
         .authorizeHttpRequests()
         .antMatchers("/web/node_modules/**").permitAll()
         .anyRequest().authenticated()
+        .and()
+        .httpBasic()
         .and()
         .formLogin()
         .loginPage("/login").permitAll()

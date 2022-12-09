@@ -11,15 +11,27 @@
 </head>
 
 <body>
-    <h1>想不到我高進一世英名</h1>
-    <div>
-        <form action="../logout" method="GET">
-            <button type="submit" class="btn btn-primary">登出</button>
-        </form>
+    <div class="container" id="app" v-cloak>
+        <div class="row mt-3">
+            <div class="col-12 mb-3">
+                <h1>想不到我{{ me.name }}一世英名...</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mb-3">
+                <form action="../logout" method="GET">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">登出</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
 
     <!-- inject:js -->
     <!-- endinject -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>

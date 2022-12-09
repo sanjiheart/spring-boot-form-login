@@ -4,9 +4,9 @@ import java.util.Collection;
 
 public class ResourceCollection<T> {
 
-  public long total;
+  private long total;
 
-  public Collection<T> resources;
+  private Collection<T> resources;
 
   public ResourceCollection(long total, Collection<T> resources) {
     this.total = total;

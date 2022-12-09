@@ -6,16 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登出Demo</title>
-    <link rel="stylesheet" href="web/node_modules/bootswatch/dist/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="web/node_modules/bootswatch/dist/lumen/bootstrap.min.css">
     <link rel="stylesheet" href="web/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
-    <div id="app">
-        <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]將離開這張桌子...</h1>
-        <form th:action="@{/logout}" method="POST">
-            <button type="submit" class="btn btn-primary" ref="submitBtn">登出</button>
-        </form>
+    <div class="container" id="app" v-cloak>
+        <div class="row mt-3">
+            <div class="col-12 mb-3">
+                <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]將離開這張桌子...</h1>
+            </div>
+        </div>
+        <div class="row" v-show="false">
+            <div class="col-12 mb-3">
+                <form th:action="@{/logout}" method="POST">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success" ref="submitBtn">登出</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="web/node_modules/vue/dist/vue.js"></script>

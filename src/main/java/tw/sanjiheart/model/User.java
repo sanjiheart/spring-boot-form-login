@@ -23,6 +23,7 @@ public class User implements UserDetails {
   private String username;
   @JsonProperty(access = Access.WRITE_ONLY)
   private String password;
+  private String name;
   private Set<String> roles;
   private boolean accountNonExpired;
   private boolean accountNonLocked;
@@ -36,36 +37,6 @@ public class User implements UserDetails {
     return authorities;
   }
 
-  @Override
-  public String getPassword() {
-    return password;
-  }
-
-  @Override
-  public String getUsername() {
-    return username;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return accountNonExpired;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return accountNonLocked;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return credentialsNonExpired;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return enabled;
-  }
-
   public String getId() {
     return id;
   }
@@ -74,32 +45,81 @@ public class User implements UserDetails {
     this.id = id;
   }
 
-  public void setRoles(Set<String> roles) {
-    this.roles = roles;
+  @Override
+  public String getUsername() {
+    return username;
   }
 
   public void setUsername(String username) {
     this.username = username;
   }
 
+  @Override
+  public String getPassword() {
+    return password;
+  }
+
   public void setPassword(String password) {
     this.password = new BCryptPasswordEncoder().encode(password);
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Set<String> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(Set<String> roles) {
+    this.roles = roles;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return accountNonExpired;
   }
 
   public void setAccountNonExpired(boolean accountNonExpired) {
     this.accountNonExpired = accountNonExpired;
   }
 
+  @Override
+  public boolean isAccountNonLocked() {
+    return accountNonLocked;
+  }
+
   public void setAccountNonLocked(boolean accountNonLocked) {
     this.accountNonLocked = accountNonLocked;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return credentialsNonExpired;
   }
 
   public void setCredentialsNonExpired(boolean credentialsNonExpired) {
     this.credentialsNonExpired = credentialsNonExpired;
   }
 
+  @Override
+  public boolean isEnabled() {
+    return enabled;
+  }
+
   public void setEnabled(boolean enabled) {
     this.enabled = enabled;
+  }
+
+  @Override
+  public String toString() {
+    return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", roles="
+        + roles + ", accountNonExpired=" + accountNonExpired + ", accountNonLocked=" + accountNonLocked
+        + ", credentialsNonExpired=" + credentialsNonExpired + ", enabled=" + enabled + "]";
   }
 
 }

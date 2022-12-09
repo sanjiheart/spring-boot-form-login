@@ -5,6 +5,7 @@ import java.net.URI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import tw.sanjiheart.model.ResourceCollection;
 import tw.sanjiheart.model.User;
 import tw.sanjiheart.svc.UserService;
 
+@CrossOrigin({ "http://localhost:9095" })
 @RestController
 public class UserController {
 
